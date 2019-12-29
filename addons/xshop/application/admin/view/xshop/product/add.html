@@ -1,0 +1,110 @@
+<form id="add-form" class="form-horizontal" onkeydown="if(event.keyCode==13)return false;" role="form" data-toggle="validator" method="POST" action="">
+    <ul class="nav nav-tabs" style="margin-bottom: 10px;">
+        <li role="presentation" class="active"><a data-toggle="tab" href="#base">基本设置</a></li>
+        <li role="presentation"><a data-toggle="tab" href="#attrs">库存/规格</a></li>
+    </ul>
+    <div class="tab-content">
+    <div class="active tab-pane" id="base">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Category_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-category_id" data-rule="required" class="form-control selectpicker" name="row[category_id]">
+                {foreach name="categoryList" item="vo"}
+                <option value="{$vo.id}">{$vo.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" data-rule="required" class="form-control" name="row[description]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" data-rule="required" class="form-control" size="50" name="row[image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">单位</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[unit_id]" id="c-unit_id" class="form-control">
+                {foreach $unitArr as $unit}
+                <option value="{$unit.id}">{$unit.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('On_sale')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[on_sale]" id="c-on_sale" class="form-control">
+                <option value="1" selected>是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rating')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rating" data-rule="required" class="form-control" step="0.01" name="row[rating]" type="number" value="5.00">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sold_count')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sold_count" data-rule="required" class="form-control" name="row[sold_count]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Review_count')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-review_count" data-rule="required" class="form-control" name="row[review_count]" type="number" value="0">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Service_tags')}</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-service_tags" multiple class="form-control selectpicker" name="row[service_tags][]">
+                {foreach name="service_tags" item="vo"}
+                <option value="{$vo.title}">{$vo.title}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+        </div>
+    </div>
+    </div>
+    <div class="tab-pane" id="attrs">
+        {include file="xshop/product/add-attrs" /}
+    </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

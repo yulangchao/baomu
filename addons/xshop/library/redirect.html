@@ -1,0 +1,21 @@
+<script>
+    var url = location.href.split('?')
+    var pars = url[1].split('&')
+    var data = {}
+    pars.forEach((n, i) => {
+        var p = n.split('=')
+        data[p[0]] = p[1]
+    })
+    if (!!data.redirect) {
+        var uri = decodeURIComponent(data.redirect)
+        delete data.redirect
+        if (Object.keys(data).length > 0) {
+            if (uri.indexOf('?') == -1) uri += '?'
+            else uri += '&'
+            uri += 'payload=' + JSON.stringify(data)
+        }
+        self.location = uri
+        //self.location = decodeURIComponent(data.redirect)
+    }
+
+</script>

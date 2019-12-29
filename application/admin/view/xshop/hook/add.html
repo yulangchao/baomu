@@ -1,0 +1,40 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group" data-rule="required" class="form-control" name="row[group]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hook')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hook" data-rule="required" class="form-control" name="row[hook]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hook_desc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hook_desc" data-rule="required" class="form-control" name="row[hook_desc]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group_sort')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group_sort" class="form-control" name="row[group_sort]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hook_sort')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hook_sort" class="form-control" name="row[hook_sort]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

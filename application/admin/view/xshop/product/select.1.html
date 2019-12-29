@@ -1,0 +1,62 @@
+<div class="product-list">
+    <div class="">
+        <select name="" id="">
+            <option value=""></option>
+        </select>
+        <input type="text">
+    </div>
+    {volist name="list" id="vo"}
+    <div class="col-md-2 col-xs-3 col-sm-3">
+        <div class="thumbnail product-item">
+            <img src="{$vo.image[0]}" alt="" style="height: 120px;">
+            <div style="height: 35px;overflow:hidden;">
+                <span>{$vo.title}</span>
+            </div>
+            <div class="center" style="margin: 5px 0;">
+                {volist name="vo.skus" id="sku"}
+                    <span data-id="{$vo.id}" data-sku_id="{$sku.id}" data-image="{$vo.image[0]}" data-product_title="{$vo.title}" data-sku_value="{$sku.value}" class="sku-item pointer">{$sku.value}</span>
+                {/volist}
+            </div>
+        </div>
+    </div>
+    {/volist}
+    <div>
+        {:$list->render()}
+    </div>
+</div>
+
+<div class="footer">
+    <span class="btn btn-sm btn-primary btn-submit">选择</span>
+</div>
+<style>
+.product-list:before {
+    content: "";
+    display: table;
+}
+.product-list:after {
+    clear: both;
+}
+.center {
+    text-align: center;
+}
+.selected {
+    border: 1px solid red!important;
+}
+.price {
+    color: red;
+}
+.pointer {
+    cursor: pointer;
+}
+.sku-item {
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    padding: 10px 0;
+    width: 100%;
+    background: #fff;
+}
+</style>

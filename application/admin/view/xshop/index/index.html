@@ -1,0 +1,54 @@
+<style>
+    a, a:hover {
+        color: #333;
+    }
+    .panel-info {
+        padding: 10px 0;
+        background: #fff;
+    }
+    .panel-info>a{
+        text-align: center;
+        border-right: 1px solid #ddd;
+    }
+    .panel-info>a p {
+        font-size: 13px;
+        font-weight: 700;
+        color: rgb(134, 129, 129);
+    }
+    .panel-info>a p:nth-child(1) {
+        margin-top: 10px;
+    }
+
+</style>
+<div class="container">
+    <div class="row">
+        <form id="index-form" class="navbar-form" role="form" method="POST" action="">
+            <input id="c-start_time" placeholder="开始时间" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm" data-use-current="true" name="row[start_time]" type="text" value="">
+            <input id="c-end_time" placeholder="结束时间" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm" data-use-current="true" name="row[end_time]" type="text" value="">
+            <button class="btn btn-primary">查询</button>
+        </form>
+    </div>
+    <div class="row panel-info">
+        <a class="col-md-2 col-xs-4 col-md-4">
+            <p>{$totalInfo.order_paied}</p>
+            <p class="text">已支付</p>
+        </a>
+        <a class="col-md-2 col-xs-4 col-md-4">
+            <p>{$totalInfo.order_wait_pay}</p>
+            <p class="text">未支付</p>
+        </a>
+        <a class="col-md-2 col-xs-4 col-md-4">
+            <p>{$totalInfo.order_shipped}</p>
+            <p>已发货</p>
+        </a>
+        <a class="col-md-2 col-xs-4 col-md-4">
+            <p>{$totalInfo.order_wait_ship}</p>
+            <p>待发货</p>
+        </a>
+        <a class="col-md-2 col-xs-4 col-md-4">
+            <p>{$totalInfo.order_money}</p>
+            <p>销售金额</p>
+        </a>
+    </div>
+    <div style="width:100%;height: 250px;" id="echart"></div>
+</div>

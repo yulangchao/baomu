@@ -1,0 +1,52 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[type]" id="" class="form-control">
+                <option value="0">按重量</option>
+                <option value="1">按件数</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label col-xs-12 col-sm-2">配送区域及运费</label>
+        <div class="col-xs-12 col-sm-8">
+            <table class="table region-table">
+                <thead>
+                    <tr>
+                        <th>配送区域</th><th>首重/件价格</th><th>续重/件价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <a class="btn btn-success btn-add-region">+添加运费规则</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sort')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sort" data-rule="required" class="form-control" name="row[sort]" type="number" value="1000">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

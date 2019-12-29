@@ -1,0 +1,133 @@
+[
+    {
+        "group_title": "商品",
+        "list": [
+            {
+                "hook": "xshop_product_view",
+                "description": "用户浏览商品",
+                "payload": "UserModel $user, ProductModel $product",
+                "listeners": [
+                    {
+                        "name": "addons\\xshop\\behavior\\product\\RecodeHistory",
+                        "description": "记录用户浏览记录",
+                        "sort": 10,
+                        "status": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "group_title": "购物车",
+        "list": [
+            {
+                "hook": "xshop_cart_add_after",
+                "description": "加入购物车后",
+                "listeners": [
+                ]
+            },
+            {
+                "hook": "xshop_cart_update_after",
+                "description": "购物车更新后",
+                "listeners": [
+                ]
+            }
+        ]
+    },
+    {
+        "group_title": "用户",
+        "list": [
+            {
+                "hook": "xshop_get_userinfo",
+                "description": "输出用户信息前",
+                "payload": "Array $user:用户基本信息($this->auth->getUserInfo()获得)",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_user_review_before",
+                "description": "用户评价商品前",
+                "payload": "Auth $user\\n OrderProductModel $orderProduct:(OrderModel order, <list> ReviewModel reviews) \\n ReviewModel $review",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_user_review_after",
+                "description": "用户评价商品后",
+                "payload": "Auth $user\\n OrderProductModel $orderProduct:(OrderModel order, <list> ReviewModel reviews) \\n ReviewModel $review",
+                "listeners": [
+                    {
+                        "name": "addons\\xshop\\behavior\\user\\UpdateProductReview",
+                        "description": "更新评价数量",
+                        "sort": 10,
+                        "status": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "group_title": "订单",
+        "list": [
+            {
+                "hook": "xshop_order_before_create_response",
+                "description": "输出创建订单数据前",
+                "payload": "",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_create_after",
+                "description": "订单创建后",
+                "payload": "OrderModel $order",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_received_before",
+                "description": "订单收货前",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_received_after",
+                "description": "订单收货后",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_cancel_before",
+                "description": "订单取消前",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_cancel_after",
+                "description": "订单取消后",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_delete_before",
+                "description": "订单删除前",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_delete_after",
+                "description": "订单删除后",
+                "payload": "OrderModel $order, Auth $user",
+                "listeners": []
+            },
+            {
+                "hook": "xshop_order_pay_ok",
+                "description": "订单支付后",
+                "payload": "OrderModel $order",
+                "listeners": [
+                    {
+                        "name": "addons\\xshop\\behavior\\order\\PayOkListener",
+                        "description": "更新库存和销量",
+                        "sort": 10,
+                        "status": 1
+                    }
+                ]
+            }
+        ]
+    }
+]

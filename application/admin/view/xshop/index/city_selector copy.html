@@ -1,0 +1,39 @@
+
+<style>
+ul li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.last-item li {
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 3px;
+    cursor: pointer;
+}
+.pointer {
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+</style>
+<ul>
+    {volist name="list" id="rows1" key="index"}
+    <li>
+        
+        <span class="name province pointer" data-index='{$index}'> <input id="code{$index}" type="checkbox">{$rows1.name}</span> 
+        {if count($rows1.childlist) > 0}
+            <ul class="last-item hidden list-{$index}">
+                {volist name="rows1.childlist" id="rows2"}
+                <li data-code="{$rows2.code}">
+                    <span class="name">{$rows2.name}</span>
+                </li>
+                {/volist}
+            </ul>
+        {/if}
+    </li>
+    {/volist}
+</ul>

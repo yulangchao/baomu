@@ -1,0 +1,90 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" data-rule="required" class="form-control" name="row[description]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('NavType')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-nav_type" data-rule="required" class="form-control" name="row[nav_type]">
+                <option value="0">首页轮播图</option>
+                <option value="1">首页导航</option>
+                <option value="2">首页广告</option>
+                <option value="3">首页分类</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-type" data-rule="required" class="form-control" name="row[type]">
+                <option value="0" data-target="normal">无跳转</option>
+                <option value="1" data-target="product">跳转到商品</option>
+                <option value="2" data-target="category">跳转到分类</option>
+                <option value="3" data-target="router">跳转到路由</option>
+                <option value="4" data-target="link">跳转到外部链接</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Target')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div id="target-render-content"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image"  class="form-control" size="50" name="row[image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">其他参数</label>
+        <div class="col-xs-12 col-sm-8">
+            <dl class="fieldlist" data-name="row[params]">
+                <dd>
+                    <ins>{:__('Array key')}</ins>
+                    <ins>{:__('Array value')}</ins>
+                </dd>
+                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> {:__('Append')}</a></dd>
+                <textarea name="row[params]" class="form-control hide" cols="30" rows="5"></textarea>
+            </dl>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sort')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sort" class="form-control" name="row[sort]" type="number" value="10000">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                {:build_radios('row[status]', [1 => '正常', 0 => '隐藏'], 1)}
+            <!-- <input id="c-status" class="form-control" name="row[status]" type="number" value="1"> -->
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

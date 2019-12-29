@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/assets/js/backend/xshop/libs/element-ui.css">
+<style>
+#app {
+    padding-bottom: 60px;
+}
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 10px 0;
+    background: #fff;
+    z-index: 100;
+}
+</style>
+<div id="app">
+    <p class="text-center" v-if="loading">加载中，请稍后</p>
+        <el-tree
+            :data="data"
+            :props="{label: 'name', children: 'childlist'}"
+            node-key="id"
+            accordion
+            :show-checkbox="true"
+            :default-checked-keys="checkedKeys"
+            :default-expanded-keys="[0]"
+            @check="change">
+      </el-tree>
+      <div class="footer">
+          <a class="btn btn-success" @click="submit">确定</a>
+      </div>
+</div>

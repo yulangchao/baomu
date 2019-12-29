@@ -1,0 +1,112 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_sn')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_sn" readonly data-rule="required" class="form-control" name="row[order_sn]" type="text" value="{$row.order_sn|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-user_id" data-rule="required" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_pay')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[is_pay]" id="c-is_pay" class="form-control">
+                <option value="0" {if $row.is_pay eq 0}selected{/if}>否</option>
+                <option value="1" {if $row.is_pay eq 1}selected{/if}>是</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" type="text" value="{:$row.pay_time?datetime($row.pay_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_delivery')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[is_delivery]" id="c-is_delivery" class="form-control">
+                <option value="0" {if $row.is_delivery eq 0}selected{/if}>否</option>
+                <option value="1" {if $row.is_delivery eq 1}selected{/if}>是</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Delivery')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-delivery" class="form-control datetimepicker" data-data-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" type="text" value="{:$row.delivery?datetime($row.delivery):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" class="form-control" name="row[status]" type="number" value="{$row.status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contactor')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contactor" data-rule="required" class="form-control" name="row[contactor]" type="text" value="{$row.contactor|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contactor_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contactor_phone" data-rule="required" class="form-control" name="row[contactor_phone]" type="text" value="{$row.contactor_phone|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Delivery_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-delivery_price" class="form-control" step="0.01" name="row[delivery_price]" type="number" value="{$row.delivery_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_price" class="form-control" step="0.01" name="row[order_price]" type="number" value="{$row.order_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_price" class="form-control" step="0.01" name="row[pay_price]" type="number" value="{$row.pay_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Discount_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-discount_price" class="form-control" step="0.01" name="row[discount_price]" type="number" value="{$row.discount_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Payed_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-payed_price" class="form-control" step="0.01" name="row[payed_price]" type="number" value="{$row.payed_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" readonly class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:$row.create_time?datetime($row.create_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-update_time" readonly class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{:$row.update_time?datetime($row.update_time):''}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
