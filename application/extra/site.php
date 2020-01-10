@@ -35,4 +35,13 @@ return array (
   'mail_smtp_pass' => 'password',
   'mail_verify_type' => '2',
   'mail_from' => '10000@qq.com',
+  'xshop_h5_appid' => '',
+  'xshop_h5_AppSecret' => '',
+  'xshop_wx_mp_appid' => 'wx5c77d6fb72dcf3e5',
+  'xshop_wx_mp_AppSecret' => '06666491bd4035e33506b3be501486d1',
+  'xshop_tt_mp_appid' => '',
+  'xshop_tt_mp_AppSecret' => '',
+  'xshop_tt_mp_mchid' => '',
+  'xshop_tt_mp_app_id' => '',
+  'xshop_tt_mp_pay_secret' => '',
 );

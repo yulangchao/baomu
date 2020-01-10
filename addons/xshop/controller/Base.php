@@ -7,7 +7,8 @@ use app\common\library\Auth;
 use addons\xshop\Hook;
 use addons\xshop\exception\NotLoginException;
 use addons\xshop\exception\IgnoreException;
-
+// 允许跨域
+header('Access-Control-Allow-Origin:*');//允许跨域
 /**
  * 入口
  * ApiInternal

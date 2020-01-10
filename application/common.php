@@ -362,3 +362,16 @@ if (!function_exists('hsv2rgb')) {
         ];
     }
 }
+
+
+//从第一个parent开始
+function generateLevel($refer_id,$level=5){
+    $user = db('user')->find($refer_id);
+    $list[] = $refer_id;
+    //5级
+    while ($user && $user['refer_id'] && count($list) <$level){
+        $list[] = $user['refer_id'];
+        $user = db('user')->find($user['refer_id']);
+    }
+    return join(",",$list);
+}

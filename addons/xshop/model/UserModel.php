@@ -70,4 +70,33 @@ class UserModel extends Model
             return $auth->getUserInfo();
         }
     }
+
+    /**
+     * 手机验证码注册或登录
+     */
+    public static function registerOrLoginByOpenid($attributes)
+    {
+        extract($attributes);
+        $refer_id = request()->post("refer_id");
+        $refer_id = $refer_id ? $refer_id: null;
+        // if (!Sms::check($mobile, $code, 'XShopRegister')) {
+        //     throw new NotFoundException("验证码错误");
+        // }
+
+        $auth = Auth::instance();
+        $user = self::where('openid', $openid)->find();
+        if (empty($user)) { // 注册
+            $other = [
+                "openid" => $openid,
+                "refer_id" => $refer_id,
+                "level_path" => generateLevel($refer_id)
+            ];
+            $auth->register($openid, '', '', '18906771111',$other);
+            $auth->direct($auth->id);
+            return $auth->getUserInfo();
+        } else { // 登录
+            $auth->direct($user->id);
+            return $auth->getUserInfo();
+        }
+    }
 }

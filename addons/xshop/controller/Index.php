@@ -211,7 +211,11 @@ class Index extends Base
     {
         $code = $this->request->post('code');
         $data = VendorModel::wxMPLogin($code);
-        return $this->success('', $data['openid']);
+        if (!$data['openid']){
+            return $this->error('');
+        }
+        return $this->success('', UserModel::registerOrLoginByOpenid($data));
+        
     }
 
     /**
